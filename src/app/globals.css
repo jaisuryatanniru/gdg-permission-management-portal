@@ -24,3 +24,19 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.bg-gdg-grid {
+  background-color: #ffffff;
+  background-image: 
+    linear-gradient(#E5E7EB 1px, transparent 1px), 
+    linear-gradient(90deg, #E5E7EB 1px, transparent 1px);
+  background-size: 40px 40px; 
+}
+
+@keyframes float-in {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.animate-float {
+  animation: float-in 0.6s ease-out forwards;
+}

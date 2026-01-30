@@ -3,13 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev ",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.36.10",
+    "@heroicons/react": "^2.2.0",
+    "@prisma/client": "^5.10.2",
     "next": "16.1.4",
+    "prisma": "^5.10.2",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },

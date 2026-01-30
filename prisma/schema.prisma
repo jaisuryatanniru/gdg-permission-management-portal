@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+// prisma/schema.prisma
+model User {
+  id        String   @id // Clerk userId
+  email     String?  @unique
+  firstName String?
+  lastName  String?
+  role      String   @default("member")
+  position  String   @default("Member") // Stores "Web Dev Lead", etc.
+  
+  requests  PermissionRequest[]
+  logs      AuditLog[] // Relation to logs
+}
+
+model PermissionRequest {
+  id        Int      @id @default(autoincrement())
+  title     String
+  reason    String?
+  status    String   @default("pending")
+  userId    String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+ Audit Logs
+model AuditLog {
+  id        Int      @id @default(autoincrement())
+  action    String   // "APPROVED", "REJECTED"
+  details   String   // "Request: Workshop Name"
+  actorId   String   // Who performed the action
+  createdAt DateTime @default(now())
+
+  actor     User     @relation(fields: [actorId], references: [id])
+}
