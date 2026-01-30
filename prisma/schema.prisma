@@ -6,7 +6,7 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-// prisma/schema.prisma
+
 model User {
   id        String   @id // Clerk userId
   email     String?  @unique
@@ -30,6 +30,7 @@ model PermissionRequest {
   user User @relation(fields: [userId], references: [id])
 }
 
+// Audit Logs
 model AuditLog {
   id        Int      @id @default(autoincrement())
   action    String   // "APPROVED", "REJECTED"
