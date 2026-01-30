@@ -30,7 +30,6 @@ model PermissionRequest {
   user User @relation(fields: [userId], references: [id])
 }
 
- Audit Logs
 model AuditLog {
   id        Int      @id @default(autoincrement())
   action    String   // "APPROVED", "REJECTED"
